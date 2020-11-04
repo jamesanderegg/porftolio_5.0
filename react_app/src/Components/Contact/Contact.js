@@ -1,0 +1,153 @@
+import { Handler } from "leaflet";
+import React, { useState } from "react";
+import styled from "styled-components";
+
+export default function Contact() {
+  const [values, setValue] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    mapleSyrup: "",
+    message: "",
+  });
+  const [errors, setErrors] = useState([]);
+  function updateValue(e) {
+    // check if its a number and convert
+    let { value } = e.target;
+    if (e.target.type === "number") {
+      value = parseInt(e.target.value);
+    }
+
+    setValue({
+      ...values,
+      [e.target.name]: value,
+    });
+  }
+  function checkForm(e) {
+    e.preventDefault();
+    let errorsList = [];
+
+    Object.keys(values).map((value) => {
+      if (value === "mapleSyrup") {
+        if (values[value] !== "") {
+          console.log("ROBOT");
+          // Do Not submit form
+          errorsList.push(value);
+        }
+        return null;
+      } else {
+        if (values[value] === "") {
+          errorsList.push(value);
+        }
+      }
+      return null;
+    });
+
+    if (errorsList.length !== 0) {
+      setErrors(errorsList);
+      console.log("Fail");
+    } else {
+      setErrors(errors);
+      handleSubmit(values);
+    }
+  }
+  async function handleSubmit(values) {
+    console.log(values);
+
+    // THIS IS WHERE WE WILL TRY FLASK MAIL
+  }
+  return (
+    <Wrapper>
+      <h2>Contact me</h2>
+
+      <FormGrid onSubmit={(e) => checkForm(e)}>
+        <FormLabel>Name:</FormLabel>
+        <FormInputandButton
+          type="text"
+          name="name"
+          id="name"
+          value={values.name}
+          placeholder="Enter your name"
+          onChange={updateValue}
+        />
+        <FormLabel>Email:</FormLabel>
+        <FormInputandButton
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Enter your email"
+          value={values.email}
+          onChange={updateValue}
+        />
+        <FormLabel>Subject:</FormLabel>
+        <FormInputandButton
+          type="text"
+          name="subject"
+          id="subject"
+          placeholder="Enter the subject"
+          value={values.subject}
+          onChange={updateValue}
+        />
+
+        <FormInputandButton
+          type="mapleSyrup"
+          name="mapleSyrup"
+          id="mapleSyrup"
+          value={values.mapleSyrup}
+          onChange={updateValue}
+          className="mapleSyrup"
+        />
+        <FormLabel>Your message:</FormLabel>
+        <textarea
+          name="message"
+          id="message"
+          placeholder="Type your Message here."
+          rows="10"
+          style={{ width: "100%" }}
+          onChange={updateValue}
+        />
+
+        <Button type="submit">Send Form</Button>
+      </FormGrid>
+    </Wrapper>
+  );
+}
+
+const Wrapper = styled.div`
+
+text-align: center;
+  color: #333;
+`;
+
+
+
+const FormGrid = styled.form`
+  
+  margin: 40px auto;
+
+  width: 80%;
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  grid-gap: 20px;
+  @media (max-width: 580px) {
+    width: 100%;
+  }
+`;
+const FormLabel = styled.label`
+  display: block;
+`;
+const FormInputandButton = styled.input`
+  grid-column: 2/3;
+`;
+const Button = styled.button`
+  grid-area: 6 / span 2;
+  margin: auto;
+  background: lightgray;
+  border: 0;
+  font-size: 20px;
+  width: 95%;
+  &:hover {
+    background: #c46c00;
+    outline: 0;
+  }
+`;
