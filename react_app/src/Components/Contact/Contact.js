@@ -135,8 +135,10 @@ const FormGrid = styled.form`
 `;
 const FormLabel = styled.label`
   display: block;
+  align-self: center;
 `;
 const FormInputandButton = styled.input`
+  font-size: 14px;
   grid-column: 2/3;
 `;
 const Button = styled.button`

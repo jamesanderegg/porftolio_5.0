@@ -101,15 +101,14 @@ export default class Map extends React.Component {
     }
     
     componentDidMount(){
-        this.map =L.map("map", {
-            center: [39.7392, -104.9903],
-            zoom: 11
-        });
-        L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
-            attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
-            maxZoom: 18,
-            id: "mapbox.streets",
-            accessToken: API_KEY
+        this.map = L.map('map').setView([39.7392, -104.9903], 9);
+
+  
+
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: "Map data &copy; <a href=\"https://www.openstreetmap.org/\">OpenStreetMap</a> contributors, <a href=\"https://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"https://www.mapbox.com/\">Mapbox</a>",
+        id: "mapbox/streets-v10",
+        accessToken: 'pk.eyJ1IjoianVpY3lqYW1lcyIsImEiOiJja2gyajIxb3IwYzZxMzBucGZkemt4Z3U5In0.3HY66jz4v0DTTGQygAYFJQ'
         }).addTo(this.map);
 
         var layer = L.geoJSON().addTo(this.map);

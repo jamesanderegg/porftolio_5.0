@@ -21,7 +21,7 @@ const projectsMap = [
     },
     {
         name: 'Denver 311: Phone Data',
-        id: 'denver311',
+        id: 'denver_311',
         type: 'map',
         description: "A map of Denvers phone information hotline for the year 2016.",
         component: <Denver311 />,
