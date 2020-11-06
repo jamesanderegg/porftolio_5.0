@@ -52,8 +52,17 @@ export default function Contact() {
     }
   }
   async function handleSubmit(values) {
-    console.log(values);
-
+    
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ 
+        name: values.name,
+        email: values.email,
+        message: values.message,
+        subject: values.subject}),
+    };
+    fetch('/contact_form', requestOptions).then(response => console.log("RESONSE",response))
     // THIS IS WHERE WE WILL TRY FLASK MAIL
   }
   return (
@@ -114,15 +123,11 @@ export default function Contact() {
 }
 
 const Wrapper = styled.div`
-
-text-align: center;
+  text-align: center;
   color: #333;
 `;
 
-
-
 const FormGrid = styled.form`
-  
   margin: 40px auto;
 
   width: 80%;
@@ -140,6 +145,9 @@ const FormLabel = styled.label`
 const FormInputandButton = styled.input`
   font-size: 14px;
   grid-column: 2/3;
+  &.mapleSyrup{
+    display: none;
+  }
 `;
 const Button = styled.button`
   grid-area: 6 / span 2;

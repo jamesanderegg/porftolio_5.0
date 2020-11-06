@@ -8,7 +8,35 @@ from sqlalchemy import create_engine
 import pandas as pd
 import json
 
+from flask_mail import Mail, Message
+#Enviromental Variables
+from decouple import config
+
 app = Flask(__name__)
+
+#FLASK MAIL CONFIG
+app.config['TESTING'] = False
+app.config['MAIL_SERVER'] = 'smtp.office365.com'
+app.config['MAIL_PORT']= 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+#app.config['MAIL_DEGUB'] = True 
+app.config['MAIL_USERNAME'] = 'jamesanderegg@jamesanderegg.com'
+app.config['MAIL_PASSWORD'] = config('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = ('Form Submission','jamesanderegg@jamesanderegg.com')
+app.config['MAIL_MAX_EMAILS'] = None
+#app.config['MAIL_SUPPRESS_SEND'] = False
+app.config['MAIL_ASCII_ATTACHMENTS'] = False
+
+
+
+# app.config['MAIL_PORT']= 465
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
+# #app.config['MAIL_DEGUB'] = True 
+# app.config['MAIL_USERNAME'] = 'iceandjames@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'eiztfgebomeslyji'
+
 
 # # username="juicyjames"
 # password="hju87ijpolispoeal23"
@@ -25,9 +53,10 @@ app = Flask(__name__)
 # LOCAL DB
 app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
 
+
 #Initiat Database
 db = SQLAlchemy(app)
-
+mail = Mail(app)
 
 class Gps_locations(db.Model):
     __tablename__ = "gps_locations"
@@ -89,6 +118,8 @@ def df_to_geojson(merged_df, lat='latitude', lon='longitude'):
 @app.route('/<path:path>')
 def my_index(path):
 
+    
+    
     # #To get User IDs we have to check if a user object exists first or it will break.
     # if len(current_user.__dict__)>1:
     #     user_id = current_user.id
@@ -98,6 +129,23 @@ def my_index(path):
     #Pass the userId as a prop so react has access to it.
     return render_template("index.html")
 
+
+@app.route('/contact_form', methods=['POST'])
+def mail_send():
+    form = request.get_json()
+    msg = Message(form['email'], recipients=['jamesanderegg@jamesanderegg.com'])
+    msg.body = 'Portolio Contact Page: from: '+ form['email'] + "\nMessage: " + form['message']
+    try:
+        mail.send(msg)
+        result="success"
+
+    except Exception as e:
+        try:
+            result=str(e)
+        except:
+            result="email fail"
+    print("EMAIL;  ", result)
+    return render_template("index.html")
 
 @app.route('/google_data', methods=["GET"])
 def google_data():
@@ -111,28 +159,6 @@ def google_data():
         empDict['longitude'].append(row.longitude)
 
     return jsonify(empDict)
-
-
-@app.route('/comments/getComments', methods=['POST'])
-def getComments():
-    if request.method == 'POST':
-        project_name = request.get_json()['project']
-        comments = Comment.query.filter_by(project_name=project_name).all()
-        comments_dict = []
-        for comment in comments:
-            user_name = User.query.filter_by(id=comment.commenter_id).first()
-            first_name = user_name.first_name
-
-            comments_dict.append({
-                "id": comment.id,
-                "project_name": comment.project_name,
-                "commenter_id": comment.commenter_id,
-                "posted": comment.posted,
-                "content": comment.content,
-                "first_name": first_name
-            })
-
-    return(jsonify(comments_dict))
 
 @app.route('/denver311')
 def denver311():
