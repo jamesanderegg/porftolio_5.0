@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, send_from_directory, render_template, request, jsonify, redirect, url_for 
 # from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 #sqlalchemy dependencies
@@ -7,7 +7,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
 import pandas as pd
 import json
-
+import os
 from flask_mail import Mail, Message
 #Enviromental Variables
 from decouple import config
@@ -38,7 +38,7 @@ app.config['MAIL_USERNAME'] = 'iceandjames@gmail.com'
 app.config['MAIL_PASSWORD'] = 'eiztfgebomeslyji'
 
 
-# username="juicyjames"
+username="juicyjames"
 password="hju87ijpolispoeal23"
 hostname="juicyjames.mysql.pythonanywhere-services.com"
 databasename="juicyjames$website_db"
@@ -186,6 +186,17 @@ def denver311():
 
     return geojson_str
 
+@app.route("/uploads/<path:filename>", methods=['GET'])
+def uploads(filename):
+    path = os.getcwd()
+    print('PATH: ********************************')
+    print(path)
+    try:
+        return send_from_directory(directory='/home/juicyjames/website_flask/flask_app/static/uploads', filename=filename, as_attachment=True)
+    except FileNotFoundError:
+        print('something went wrong with file path **************')
+        # abort(404)
+        return jsonify(300)
 
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
