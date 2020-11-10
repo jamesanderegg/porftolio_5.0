@@ -30,28 +30,28 @@ app.config['MAIL_ASCII_ATTACHMENTS'] = False
 
 
 
-# app.config['MAIL_PORT']= 465
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# #app.config['MAIL_DEGUB'] = True 
-# app.config['MAIL_USERNAME'] = 'iceandjames@gmail.com'
-# app.config['MAIL_PASSWORD'] = 'eiztfgebomeslyji'
+app.config['MAIL_PORT']= 465
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+#app.config['MAIL_DEGUB'] = True 
+app.config['MAIL_USERNAME'] = 'iceandjames@gmail.com'
+app.config['MAIL_PASSWORD'] = 'eiztfgebomeslyji'
 
 
-# # username="juicyjames"
-# password="hju87ijpolispoeal23"
-# hostname="juicyjames.mysql.pythonanywhere-services.com"
-# databasename="juicyjames$website_db"
-# SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}"
+# username="juicyjames"
+password="hju87ijpolispoeal23"
+hostname="juicyjames.mysql.pythonanywhere-services.com"
+databasename="juicyjames$website_db"
+SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}"
 
-# #uri database location
-# app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
-# app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
-# app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-# app.secret_key = "something only you know"
+#uri database location
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.secret_key = "something only you know"
 
 # LOCAL DB
-app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
+# app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
 
 
 #Initiat Database
