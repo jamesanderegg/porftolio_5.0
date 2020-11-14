@@ -10,6 +10,7 @@ export default function Contact() {
     mapleSyrup: "",
     message: "",
   });
+  const [formSent, setFormSent] = useState(false);
   const [errors, setErrors] = useState([]);
   function updateValue(e) {
     // check if its a number and convert
@@ -62,9 +63,35 @@ export default function Contact() {
         message: values.message,
         subject: values.subject}),
     };
-    fetch('/contact_form', requestOptions).then(response => console.log("RESONSE",response))
-    // THIS IS WHERE WE WILL TRY FLASK MAIL
+    fetch('/contact_form', requestOptions).then(response => {
+      console.log(response)
+      if(response.status === 200){
+        //form successful
+        //clear errors
+        setErrors([])
+        //clear form
+        setValue({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        //set form sent to true and display Success
+        setFormSent(true);
+      }else{
+        
+        //clear form
+        setValue({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+
+      }
+    })
   }
+  
   return (
     <Wrapper>
       <h2>Contact me</h2>
@@ -112,12 +139,15 @@ export default function Contact() {
           id="message"
           placeholder="Type your Message here."
           rows="10"
+          value={values.message}
           style={{ width: "100%" }}
           onChange={updateValue}
         />
-
+        
         <Button type="submit">Send Form</Button>
       </FormGrid>
+      {formSent? (<h4>Thank you, your form has been sent!</h4>): (null)}
+      {errors.map(error => (<h4>Please fix the {error} field in the form</h4>))}
     </Wrapper>
   );
 }
@@ -155,6 +185,7 @@ const Button = styled.button`
   background: lightgray;
   border: 0;
   font-size: 20px;
+  cursor: pointer;
   width: 95%;
   &:hover {
     background: #c46c00;

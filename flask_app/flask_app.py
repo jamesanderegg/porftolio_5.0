@@ -28,14 +28,12 @@ app.config['MAIL_MAX_EMAILS'] = None
 #app.config['MAIL_SUPPRESS_SEND'] = False
 app.config['MAIL_ASCII_ATTACHMENTS'] = False
 
-
-
-app.config['MAIL_PORT']= 465
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-#app.config['MAIL_DEGUB'] = True 
-app.config['MAIL_USERNAME'] = 'iceandjames@gmail.com'
-app.config['MAIL_PASSWORD'] = 'eiztfgebomeslyji'
+# app.config['MAIL_PORT']= 465
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
+# #app.config['MAIL_DEGUB'] = True 
+# app.config['MAIL_USERNAME'] = 'iceandjames@gmail.com'
+# app.config['MAIL_PASSWORD'] = 'eiztfgebomeslyji'
 
 
 username="juicyjames"
@@ -62,7 +60,6 @@ class Gps_locations(db.Model):
     __tablename__ = "gps_locations"
     latitude = db.Column(db.Float, primary_key=True)
     longitude = db.Column(db.Float, nullable=False)
-
 
 class Denver_311(db.Model):
     __tablename__ = "denver"

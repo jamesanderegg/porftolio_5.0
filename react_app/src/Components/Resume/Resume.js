@@ -15,7 +15,7 @@ const ResumeLink = styled.a`
 const ResumeGrid = styled.div`
   border-top: 2px solid white;
   display: grid;
-  margin: 40px;
+  
   grid-template-columns: 1fr 1fr;
   text-align: center;
   grid-template-rows: 0.6fr 0.5fr;
