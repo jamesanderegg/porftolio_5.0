@@ -1,4 +1,5 @@
 from flask import Flask, send_from_directory, render_template, request, jsonify, redirect, url_for 
+from flask_cors import CORS, cross_origin
 # from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 #sqlalchemy dependencies
@@ -131,7 +132,28 @@ def my_index(path):
 def mail_send():
     form = request.get_json()
     msg = Message(form['email'], recipients=['jamesanderegg@jamesanderegg.com'])
+    
     msg.body = 'Portolio Contact Page: from: '+ form['email'] + "\nMessage: " + form['message']
+    msg.html = "<b>testing</b>"
+    try:
+        mail.send(msg)
+        result="success"
+
+    except Exception as e:
+        try:
+            result=str(e)
+        except:
+            result="email fail"
+    print("EMAIL;  ", result)
+    return render_template("index.html")
+
+@app.route('/snoc_form', methods=['POST'])
+@cross_origin()
+def snoc_form():
+    form = request.get_json()
+    # ['jamesanderegg@jamesanderegg.com','aumeric@hotmail.com','vicweese@gmail.com']
+    msg = Message(form['email'], recipients=['jamesanderegg@jamesanderegg.com'])
+    msg.body = 'SNOC Contact Page: from: '+ form['email'] + "\nMessage: " + form['message']
     try:
         mail.send(msg)
         result="success"
