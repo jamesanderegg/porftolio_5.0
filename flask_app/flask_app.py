@@ -17,30 +17,23 @@ app = Flask(__name__)
 
 #FLASK MAIL CONFIG
 app.config['TESTING'] = False
-app.config['MAIL_SERVER'] = 'smtp.office365.com'
+app.config['MAIL_SERVER'] = config('MAIL_SERVER')
 app.config['MAIL_PORT']= 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 #app.config['MAIL_DEGUB'] = True 
-app.config['MAIL_USERNAME'] = 'jamesanderegg@jamesanderegg.com'
+app.config['MAIL_USERNAME'] = config('MAIL_USERNAME')
 app.config['MAIL_PASSWORD'] = config('MAIL_PASSWORD')
 app.config['MAIL_DEFAULT_SENDER'] = ('Form Submission','jamesanderegg@jamesanderegg.com')
 app.config['MAIL_MAX_EMAILS'] = None
 #app.config['MAIL_SUPPRESS_SEND'] = False
 app.config['MAIL_ASCII_ATTACHMENTS'] = False
 
-# app.config['MAIL_PORT']= 465
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# #app.config['MAIL_DEGUB'] = True 
-# app.config['MAIL_USERNAME'] = 'iceandjames@gmail.com'
-# app.config['MAIL_PASSWORD'] = 'eiztfgebomeslyji'
 
-
-username="juicyjames"
-password="hju87ijpolispoeal23"
-hostname="juicyjames.mysql.pythonanywhere-services.com"
-databasename="juicyjames$website_db"
+username = config('DB_USERNAME')
+password = config('DB_USERNAME')
+hostname = config('DB_HOSTNAME')
+databasename = config('DB_NAME')
 SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}"
 
 #uri database location
@@ -134,7 +127,7 @@ def mail_send():
     msg = Message(form['email'], recipients=['jamesanderegg@jamesanderegg.com'])
     
     msg.body = 'Portolio Contact Page: from: '+ form['email'] + "\nMessage: " + form['message']
-    msg.html = "<b>testing</b>"
+    msg.html = "<b>HELLO WORLD</b>"
     try:
         mail.send(msg)
         result="success"
