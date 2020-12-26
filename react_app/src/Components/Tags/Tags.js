@@ -28,8 +28,7 @@ const TagItem = styled.div`
 const Tags = ({ tags, tagsCount, registerTag }) => {
   return (
     <>
-      <h2 className="tag-title">Projects</h2>
-      <h3 className="tag-title">Click the tags below to sort my work.</h3>
+      
       <TagContainerGrid>
         <TagItem className="item" onClick={registerTag}>
           All Projects

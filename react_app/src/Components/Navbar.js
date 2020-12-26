@@ -13,7 +13,7 @@ export default function Navbar({pageData, sidePanelClickHandler}){
         <div className="nav-content">
           
           <ToggleButton click={sidePanelClickHandler}/>
-          <h2 className="nav-name" onClick={scrollToTop}>James Anderegg</h2>
+          <h1 className="nav-name" onClick={scrollToTop}>James Anderegg</h1>
           <ul className="nav-items">
               {pageData.map((item, index) => (<li className="nav-item" key={`nav-${item.name}${index}`}>
                   <Link

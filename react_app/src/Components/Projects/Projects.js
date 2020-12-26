@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import projectsMap from "../../utilities/projectsMap";
 import Tags from "../Tags/Tags";
-import ProjectCard from "../ProjectCard/ProjectCard"
-import styled from 'styled-components';
-
+import ProjectCard from "../ProjectCard/ProjectCard";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
-  
   min-height: 90vh;
+`;
+const Title = styled.h2``;
+const SubTitle = styled.ul`
+  font-style: italic;
 `;
 
 export default function Projects() {
@@ -22,9 +24,9 @@ export default function Projects() {
   };
 
   const registerTag = (e) => {
-    if(e.target.id === "all"){
-      setTagProject('');
-      return
+    if (e.target.id === "all") {
+      setTagProject("");
+      return;
     }
     setTagProject(e.target.id);
   };
@@ -48,14 +50,18 @@ export default function Projects() {
 
   tags = _.uniq(tags);
 
-  
   return (
     <Wrapper>
+      <Title>My Projects:</Title>
+      <SubTitle>
+        <li>Click the tags at the top to sort the projects.</li>
+        <li>Click the card projects to flip them for more information.</li>
+      </SubTitle>
       <Tags tags={tags} tagsCount={tagCounts} registerTag={registerTag} />
       <ProjectCard
-            projectList={projectsList}
-            setLoadedProject={registerProjectLoaded}
-          />
+        projectList={projectsList}
+        setLoadedProject={registerProjectLoaded}
+      />
     </Wrapper>
   );
 }
