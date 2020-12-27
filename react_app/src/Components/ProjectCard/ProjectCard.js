@@ -7,12 +7,14 @@ import { Link } from "react-router-dom";
 const GalleryGrid = styled.div`
   --auto-grid-min-size: 14rem;
   display: grid;
+  border: 1px solid red;
   grid-template-columns: repeat(
     auto-fill,
     minmax(var(--auto-grid-min-size), 1fr)
   );
 `;
 const ItemCard = styled.div`
+  border: 1px solid blue;
   text-align: center;
   width: 220px;
   height: 310px;

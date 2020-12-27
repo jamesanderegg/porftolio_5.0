@@ -40,7 +40,7 @@ SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{username}:{password}@{hostna
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.secret_key = "something only you know"
+app.secret_key = config('DB_SECRET_KEY')
 
 # LOCAL DB
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'

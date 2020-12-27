@@ -57,7 +57,7 @@ export default function Projects() {
         <li>Click the tags at the top to sort the projects.</li>
         <li>Click the card projects to flip them for more information.</li>
       </SubTitle>
-      <Tags tags={tags} tagsCount={tagCounts} registerTag={registerTag} />
+      <Tags tags={tags} tagsCount={tagCounts} registerTag={registerTag} projectsList={projectsList}/>
       <ProjectCard
         projectList={projectsList}
         setLoadedProject={registerProjectLoaded}
