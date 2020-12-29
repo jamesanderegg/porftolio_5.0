@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  text-align: center;
+  
 `;
 const ResumeLink = styled.a`
   color: white;
@@ -40,7 +40,7 @@ const OtherLink = styled.span`
 export default function Resume() {
   return (
     <Wrapper>
-      <h1>My Resume</h1>
+      <h2>Resume</h2>
 
       <ResumeGrid>
         <ResumeItem>

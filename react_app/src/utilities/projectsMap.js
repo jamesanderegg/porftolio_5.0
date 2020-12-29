@@ -67,7 +67,7 @@ const projectsMap = [
         website: 'https://pizzabytheslice.netlify.app/?fbclid=IwAR15qWzcWihXnvIdtERClarZjD8_GLhz8ZeXgizCDtrgRF0nbDEQ-5h3-n4',
         url: 'https://mastergatsby.com/',
         urlText: 'Wes Bos Master Gatsby',
-        tags: "power-bi, data, dashboard, denver",
+        tags: "data, sanity, gatsby, cms",
         image: 'https://www.jamesanderegg.com/uploads/images/slices.PNG',
         text: "This website was built with Gatsby frontend and a content managment system called Sanity."
     }

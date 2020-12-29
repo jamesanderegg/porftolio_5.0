@@ -55,7 +55,7 @@ const FooterText = styled.div`
 export default function About() {
   return (
     <>
-      <h2>About me:</h2>
+      <h2>About:</h2>
       <GridWrapper>
         {/* <Picture  src={myImage} /> */}
 

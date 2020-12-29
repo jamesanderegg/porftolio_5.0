@@ -94,7 +94,7 @@ export default function Contact() {
   
   return (
     <Wrapper>
-      <h2>Contact me</h2>
+      <h2>Contact:</h2>
 
       <FormGrid onSubmit={(e) => checkForm(e)}>
         <FormLabel>Name:</FormLabel>
@@ -153,7 +153,6 @@ export default function Contact() {
 }
 
 const Wrapper = styled.div`
-  text-align: center;
   color: #333;
 `;
 
