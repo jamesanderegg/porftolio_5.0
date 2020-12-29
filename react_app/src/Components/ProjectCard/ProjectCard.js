@@ -78,11 +78,15 @@ const CardGrid = styled.div`
   display: grid;
   border: 1px solid red;
   grid-template-rows: 42px 100% 1fr;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 `;
 const CardBody = styled.span`
   display: grid;
   border: 1px solid blue;
   grid-template-columns: 1fr 1fr;
+  
 `;
 
 const ProjectCard = ({ projectList, setLoadedProject }) => {
@@ -92,7 +96,7 @@ const ProjectCard = ({ projectList, setLoadedProject }) => {
         <ItemCard key={project.id}>
           <input type="checkbox" id={project.id} />
           <label className="card" key={project.id} htmlFor={project.id}>
-            <div className="front front-overlay" style={{backgroundImage: `url(${project.image})`}}>
+            <CardGrid className="front front-overlay" style={{backgroundImage: `url(${project.image})`}}>
             {/* <Image src={project.image} alt={project.id} /> */}
             <ItemBoldText>{project.name}</ItemBoldText>
               {/* <ItemBoldText>{project.name}</ItemBoldText>
@@ -105,7 +109,7 @@ const ProjectCard = ({ projectList, setLoadedProject }) => {
                 })}
               </TagGrid>
               </CardBody> */}
-            </div>
+            </CardGrid>
             
             <div className="back">
               <ItemBoldText>{project.name}</ItemBoldText>
