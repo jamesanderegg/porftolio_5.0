@@ -5,7 +5,9 @@ const TagContainerGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
-  margin-bottom: 4rem;
+  margin-bottom: 1rem;
+  
+
 `;
 const TagItem = styled.div`
   display: grid;
