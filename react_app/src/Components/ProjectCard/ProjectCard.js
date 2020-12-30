@@ -36,7 +36,7 @@ const TagGrid = styled.span`
   flex-wrap: wrap;
   gap: 0.1rem;
   margin-bottom: 1rem;
-  justify-content:center;
+  justify-content: center;
   text-align: center;
 `;
 const Tag = styled.span`
@@ -46,50 +46,36 @@ const Tag = styled.span`
   font: bold 12px/1 sans-serif;
   color: #fff;
 `;
-const DescriptionGrid = styled.span`
-  display: grid;
-  height: 180px;
-  grid-template-columns: 1fr;
+const ToolList = styled.ul`
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+`;
+const Tool = styled.li`
+  margin: 1px;
+  font: bold 12px/1 sans-serif;
+  color: #333;
 `;
 
-const LinksContainerGrid = styled.span`
-  align-content: center;
-  display: grid;
-  grid-gap: 3px;
-  text-align: center;
-`;
-const LinkTag = styled.span`
-  font: bold 14px/1 sans-serif;
-  color: white;
-  padding: 5px;
-  background-color: rgba(26, 10, 240, 0.9);
-  cursor: pointer;
-  &:hover {
-    background-color: rgba(12, 28, 61, 0.8);
-  }
-  a {
-    color: white;
-    text-decoration: none;
-  }
-`;
 const CardGrid = styled.div`
   border: 3px solid #fff;
 
-  box-shadow: inset 0 0 0 2000px rgba(36, 23, 0, 0.6);
+  box-shadow: inset 0 0 0 2000px rgba(36, 23, 0, 0.3);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  
 `;
-const SubDescription = styled.p`
-  text-align: center;
-  margin: auto;
-  background-color: #383838;
-  color: white;
-  width: 90%;
-  padding: 5px;
+const Description = styled.div`
+  color: #333;
+  width: 99%;
+  padding: 15px;
+  border: 1px solid red;
+  margin: 10px auto;
 `;
-
+const Github = styled.a`
+  color: #333;
+  border: 1px solid aqua;
+`;
 
 const ProjectCard = ({ projectList, setLoadedProject }) => {
   return (
@@ -109,48 +95,45 @@ const ProjectCard = ({ projectList, setLoadedProject }) => {
                   return <Tag key={`tag-${tag}`}>{tag}</Tag>;
                 })}
               </TagGrid>
-              
             </CardGrid>
 
             <div className="back">
-              
-              <h3>{project.name}</h3>
-              <SubDescription>
-                <p>{project.description}</p>
-              </SubDescription>
-              <LinksContainerGrid>
-                <LinkTag>
-                  <a
-                    href={project.url}
-                    rel="noopener noreferrer"
-                    target="_blank"
-                  >
-                    {project.urlText}
-                  </a>
-                </LinkTag>
-                {project.website ? (
-                  <LinkTag>
-                    <a
-                      href={project.website}
-                      rel="noopener noreferrer"
-                      target="_blank"
-                    >
-                      Client Website
-                    </a>
-                  </LinkTag>
-                ) : null}
+              <ToolList>
+              {project.tools.split(",").map((tool) => {
+                return <Tool key={`tool-${tool}`}>{tool}</Tool>
+              })}
+              </ToolList>
+              <Github
+                href={project.github}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i class="fab fa-github fa-2x"></i> Source Code
+              </Github>
 
-                {project.component ? (
-                  <Link
-                    to={`/${project.id}`}
-                    className="load-SubDescription"
-                    onClick={setLoadedProject}
-                  >
-                    Load {project.type}
-                  </Link>
-                ) : null}
-              </LinksContainerGrid>
-              <i class="fab fa-github fa-2x"></i>
+              {project.description}
+
+              {project.website ? (
+                <a
+                  href={project.website}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  Client Website
+                </a>
+              ) : null}
+
+              {project.component ? (
+                <Link
+                  to={`/${project.id}`}
+                  className="load-SubDescription"
+                  onClick={setLoadedProject}
+                >
+                  Load {project.type}
+                </Link>
+              ) : null}
+
+           
             </div>
           </label>
         </ItemCard>
