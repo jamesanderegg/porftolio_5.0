@@ -11,17 +11,17 @@ const GridWrapper = styled.div`
     display: block;
   }
 `;
-// const Picture = styled.img`
-//   width: 200px;
-//   align-self: center;
-//   margin: 15px auto;
-//   border-radius: 20px;
-//   grid-area: 1 / 1 / span 2;
-//   @media (max-width: 580px) {
-//       grid-area: 2/1;
-//       margin: 0 auto;
-//   }
-// `;
+const Picture = styled.img`
+  width: 200px;
+  align-self: center;
+  margin: 15px auto;
+  border-radius: 20px;
+  grid-area: 1 / 1 / span 2;
+  @media (max-width: 580px) {
+      grid-area: 2/1;
+      margin: 0 auto;
+  }
+`;
 const Text = styled.div`
   text-align: center;
   align-self: center;
@@ -57,7 +57,7 @@ export default function About() {
     <>
       <h2>About:</h2>
       <GridWrapper>
-        {/* <Picture  src={myImage} /> */}
+        <Picture  src='https://www.jamesanderegg.com/uploads/images/profile.png'/>
 
         <Text>
           I am a software developer working as a freelance Data Scientist and

@@ -38,12 +38,12 @@ const Tags = ({ tags, tagsCount, registerTag, projectsList }) => {
       <TagContainerGrid>
         <TagItem onClick={registerTag}>
           <TagsItem>all</TagsItem>
-          <TagsCount>{projectsList.length}</TagsCount>
+          <TagsCount>5</TagsCount>
         </TagItem>
         {tags.sort().map((tag) => (
           <TagItem key={tag} onClick={registerTag}>
             <TagsItem id={tag}>{tag}</TagsItem>
-            <TagsCount> {tagsCount[tag]}</TagsCount>
+            <TagsCount id={tag}> {tagsCount[tag]}</TagsCount>
           </TagItem>
         ))}
       </TagContainerGrid>

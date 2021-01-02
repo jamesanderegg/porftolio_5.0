@@ -137,11 +137,12 @@ export default function Contact() {
         <textarea
           name="message"
           id="message"
-          placeholder="Type your Message here."
+          placeholder="Type your message here."
           rows="10"
           value={values.message}
           style={{ width: "100%" }}
           onChange={updateValue}
+          style={{fontFamily: 'Georgia'}}
         />
         
         <Button type="submit">Send Form</Button>
@@ -154,6 +155,7 @@ export default function Contact() {
 
 const Wrapper = styled.div`
   color: #333;
+  
 `;
 
 const FormGrid = styled.form`

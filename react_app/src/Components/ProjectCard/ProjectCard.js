@@ -50,32 +50,77 @@ const ToolList = styled.ul`
   columns: 2;
   -webkit-columns: 2;
   -moz-columns: 2;
+  list-style-position: inside;
+  text-align: start;
+  margin: 0;
+  padding-left: 8px;
 `;
 const Tool = styled.li`
-  margin: 1px;
-  font: bold 12px/1 sans-serif;
   color: #333;
+  font-size: 14px;
+  text-decoration: bold;
 `;
 
 const CardGrid = styled.div`
   border: 3px solid #fff;
-
   box-shadow: inset 0 0 0 2000px rgba(36, 23, 0, 0.3);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
 `;
-const Description = styled.div`
-  color: #333;
-  width: 99%;
-  padding: 15px;
-  border: 1px solid red;
-  margin: 10px auto;
-`;
+
 const Github = styled.a`
   color: #333;
-  border: 1px solid aqua;
 `;
+const BackTitle = styled.h4`
+  text-decoration: underline;
+  font-style: bold;
+  text-align: start;
+  margin: 0;
+  padding: 3px;
+`;
+const ToolsTitle = styled.h5`
+  font-style: bold;
+  text-decoration: underline;
+  text-align: start;
+  margin: 0;
+  padding: 3px;
+`;
+const Description = styled.p`
+  font: 12px/1 sans-serif;
+  text-align: start;
+  padding: 4px;
+  margin: 0 auto;
+  width: 90%;
+`;
+const Outline = styled.div`
+  border: 2px solid #333;
+  margin: 5px;
+  padding: 4px;
+`;
+const LinksGrid = styled.span`
+  position: fixed;
+  bottom: 20px;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  width: 95%;
+  height: 90px;
+`;
+const ButtonsText = styled.p`
+  margin: 0px;
+  padding: 0px;
+`;
+const DenverLink = styled.a`
+  display: block;
+  margin: 10px;
+  text-align: start;
+  color: rgba(16, 8, 116, 1);
+`
+const ProjectLinks = styled.span`
+  color: #7a2301;
+` 
 
 const ProjectCard = ({ projectList, setLoadedProject }) => {
   return (
@@ -98,42 +143,61 @@ const ProjectCard = ({ projectList, setLoadedProject }) => {
             </CardGrid>
 
             <div className="back">
-              <ToolList>
-              {project.tools.split(",").map((tool) => {
-                return <Tool key={`tool-${tool}`}>{tool}</Tool>
-              })}
-              </ToolList>
-              <Github
-                href={project.github}
-                rel="noopener noreferrer"
-                target="_blank"
-              >
-                <i class="fab fa-github fa-2x"></i> Source Code
-              </Github>
+              <Outline>
+                <BackTitle>{project.name}</BackTitle>
+                <Description>{project.description}</Description>
+                <ToolsTitle>Tools:</ToolsTitle>
+                <ToolList>
+                  {project.tools.split(",").map((tool) => {
+                    return <Tool key={`tool-${tool}`}>{tool}</Tool>;
+                  })}
+                </ToolList>
+                {project.id == "denver-dashboard" ? (
+                  <DenverLink
+                    href={project.resources}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    Denver Open Data
+                  </DenverLink>
+                ) : null}
+                <LinksGrid>
+                  <Github
+                    href={project.github}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <i class="fab fa-github fa-2x"></i>{" "}
+                    <ButtonsText>Source Code</ButtonsText>
+                  </Github>
+                  {project.website ? (
+                    <a
+                      href={project.website}
+                      rel="noopener noreferrer"
+                      target="_blank" style={{color: '#7a2301'}}
+                    >
+                    <ProjectLinks>
+                      <i class="fas fa-angle-double-right fa-2x"></i>
+                      <ButtonsText>Client Website</ButtonsText>
+                      </ProjectLinks>
+                    </a>
+                  ) : null}
 
-              {project.description}
-
-              {project.website ? (
-                <a
-                  href={project.website}
-                  rel="noopener noreferrer"
-                  target="_blank"
-                >
-                  Client Website
-                </a>
-              ) : null}
-
-              {project.component ? (
-                <Link
-                  to={`/${project.id}`}
-                  className="load-SubDescription"
-                  onClick={setLoadedProject}
-                >
-                  Load {project.type}
-                </Link>
-              ) : null}
-
-           
+                  {project.component ? (
+                    <Link
+                      to={`/${project.id}`}
+                      className="load-SubDescription"
+                      onClick={setLoadedProject}
+                      style={{color: '#7a2301'}}
+                    >
+                    <ProjectLinks>
+                      <i class="fas fa-angle-double-right fa-2x"></i>
+                      <ButtonsText>Open Project</ButtonsText>
+                      </ProjectLinks>
+                    </Link>
+                  ) : null}
+                </LinksGrid>
+              </Outline>
             </div>
           </label>
         </ItemCard>
