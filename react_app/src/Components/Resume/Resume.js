@@ -54,7 +54,7 @@ export default function Resume() {
         </ResumeItem>
         <ResumeItem>
           <ResumeLink
-            href="https://drive.google.com/file/d/1wWPpbAjWxnnl9G_siPrZ6SH0p1Gd1WH2/view?usp=sharing"
+            href="https://drive.google.com/file/d/1OEybKm8DrexzN67q_D1KbjS7keYRkhRf/view?usp=sharing"
             target="_blank"
           >
             <i class="fab fa-google fa-4x"></i>

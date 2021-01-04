@@ -119,7 +119,7 @@ const DenverLink = styled.a`
   color: rgba(16, 8, 116, 1);
 `
 const ProjectLinks = styled.span`
-  color: #7a2301;
+  color: #1d66c5;
 ` 
 
 const ProjectCard = ({ projectList, setLoadedProject }) => {
@@ -174,7 +174,7 @@ const ProjectCard = ({ projectList, setLoadedProject }) => {
                     <a
                       href={project.website}
                       rel="noopener noreferrer"
-                      target="_blank" style={{color: '#7a2301'}}
+                      target="_blank" style={{color: '#1d66c5'}}
                     >
                     <ProjectLinks>
                       <i class="fas fa-angle-double-right fa-2x"></i>
@@ -188,7 +188,7 @@ const ProjectCard = ({ projectList, setLoadedProject }) => {
                       to={`/${project.id}`}
                       className="load-SubDescription"
                       onClick={setLoadedProject}
-                      style={{color: '#7a2301'}}
+                      style={{color: '#1d66c5'}}
                     >
                     <ProjectLinks>
                       <i class="fas fa-angle-double-right fa-2x"></i>
