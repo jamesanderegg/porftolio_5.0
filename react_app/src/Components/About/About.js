@@ -12,6 +12,7 @@ const GridWrapper = styled.div`
   }
 `;
 const Picture = styled.img`
+  display: block;
   width: 200px;
   align-self: center;
   margin: 15px auto;
