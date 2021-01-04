@@ -16,7 +16,7 @@ const Picture = styled.img`
   width: 200px;
   align-self: center;
   margin: 15px auto;
-  border-radius: 60px;
+  border-radius: 10px;
   grid-area: 1 / 1 / span 2;
   @media (max-width: 580px) {
       grid-area: 2/1;
