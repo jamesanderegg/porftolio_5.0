@@ -52,7 +52,7 @@ export default function Projects() {
 
   return (
     <Wrapper>
-      <Title>Projects:</Title>
+      <Title>Projects</Title>
       <SubTitle>
         <li>Click the tags at the top to sort the projects.</li>
         <li>Click the card projects to flip them for more information.</li>

@@ -94,7 +94,7 @@ export default function Contact() {
   
   return (
     <Wrapper>
-      <h2>Contact:</h2>
+      <h2>Contact</h2>
 
       <FormGrid onSubmit={(e) => checkForm(e)}>
         <FormLabel>Name:</FormLabel>
@@ -142,7 +142,7 @@ export default function Contact() {
           value={values.message}
           style={{ width: "100%" }}
           onChange={updateValue}
-          style={{fontFamily: 'Georgia'}}
+          style={{fontFamily: 'serif', fontSize: '14px'}}
         />
         
         <Button type="submit">Send Form</Button>
@@ -179,6 +179,7 @@ const FormInputandButton = styled.input`
   &.mapleSyrup{
     display: none;
   }
+  font-family: serif;
 `;
 const Button = styled.button`
   grid-area: 6 / span 2;

@@ -16,7 +16,7 @@ const Picture = styled.img`
   width: 200px;
   align-self: center;
   margin: 15px auto;
-  border-radius: 20px;
+  border-radius: 60px;
   grid-area: 1 / 1 / span 2;
   @media (max-width: 580px) {
       grid-area: 2/1;
@@ -56,7 +56,7 @@ const FooterText = styled.div`
 export default function About() {
   return (
     <>
-      <h2>About:</h2>
+      <h2>About</h2>
       <GridWrapper>
         <Picture  src='https://www.jamesanderegg.com/uploads/images/profile.png'/>
 

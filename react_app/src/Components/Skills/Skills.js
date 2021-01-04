@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 export default function Skills() {
   return (
     <Wrapper>
-      <h2>Tools & Skills:</h2>
+      <h2>Tools & Skills</h2>
       <Logos />
       <WhatIDo />
     </Wrapper>
