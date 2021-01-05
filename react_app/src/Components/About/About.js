@@ -63,7 +63,7 @@ export default function About() {
         <Text>
           I am a software developer working as a freelance Data Scientist and
           Web Developer, doing business as, DataFluent. Born to think outside the
-          box, attentive to detail and eager to learn. Always learning new
+          box, attentive to detail and eager to learn. Always exploring new
           talents and challenging myself. Team orientated and lover of all
           people. Born and raised in Golden, Colorado.
         </Text>

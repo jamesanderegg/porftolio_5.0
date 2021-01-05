@@ -27,7 +27,9 @@ const Wrapper = styled.div`
     font-size: 22px;
     
   `;
-  const ItemSkills = styled.ul``;
+  const ItemSkills = styled.ul`
+    text-align: start;
+  `;
 const WhatIDo = () => {
   
   return (
