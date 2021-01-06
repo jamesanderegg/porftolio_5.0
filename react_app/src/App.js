@@ -7,7 +7,7 @@ import projectsMap from "./utilities/projectsMap";
 import pageData from "./utilities/pageDate";
 import SidePanel from "./Components/SidePanel/SidePanel";
 import Backdrop from "./Components/Backdrop/Backdrop";
-import GoBack from "./utilities/GoBack";
+import styled from 'styled-components';
 
 import {
   BrowserRouter as Router,
@@ -15,6 +15,12 @@ import {
   Route,
 } from "react-router-dom";
 import Footer from "./Components/Footer/Footer";
+
+
+const ProjectWrapper = styled.div`
+    margin: 0;
+    
+`;
 
 function App() {
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
@@ -47,10 +53,9 @@ function App() {
       <Switch>
         {projectsMap.map((project)=>(
           <Route path={`/${project.id}`} key={`route-${project.id}`}>
-          <>
-          <GoBack />
+          <ProjectWrapper>
             {project.component}
-          </>
+          </ProjectWrapper>
           </Route>
         ))}
         <Route path="/">
@@ -77,10 +82,11 @@ function App() {
                 />
               );
             })}
+            <Footer />
           </div>
         </Route>
       </Switch>
-      <Footer />
+     
       
     </Router>
   );

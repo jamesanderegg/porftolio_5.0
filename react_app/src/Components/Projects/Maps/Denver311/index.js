@@ -6,9 +6,8 @@ import styled from "styled-components";
 const Wrapper = styled.div`
     text-align: center;
 `;
-const Paragraph = styled.p`
-    margin: 20px;
-`;
+
+
 
 export default class Denver311 extends React.Component {
     state = {
@@ -32,8 +31,8 @@ export default class Denver311 extends React.Component {
         
             <Wrapper className="map">
                 <h1>Denver 311 Help Center 2016</h1>
-                <Paragraph>Denver has an open data catalog that has a variety of data. This is the Denver 311 Help Center database from 2016, Complaints. Each data point is clickable and has a description of the incident.</Paragraph>
-                {this.state.data.length >0? <br/> : <h1>DATA LOADING:</h1> }
+                <p>Denver has an open data catalog that has a variety of data. This is the Denver 311 Help Center database from 2016, Complaints. Each data point is clickable and has a description of the incident.</p>
+                {this.state.data.length >0? <br/> : <h3>DATA LOADING:</h3> }
             
             <Map props={this.state.data} />
             </Wrapper>

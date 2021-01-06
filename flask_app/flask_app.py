@@ -31,7 +31,7 @@ app.config['MAIL_ASCII_ATTACHMENTS'] = False
 
 
 username = config('DB_USERNAME')
-password = config('DB_USERNAME')
+password = config('DB_PASSWORD')
 hostname = config('DB_HOSTNAME')
 databasename = config('DB_NAME')
 SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}"
@@ -40,7 +40,7 @@ SQLALCHEMY_DATABASE_URI = f"mysql+mysqlconnector://{username}:{password}@{hostna
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQLALCHEMY_POOL_RECYCLE"] = 299
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.secret_key = config('DB_SECRET_KEY')
+app.secret_key = "something only you know"
 
 # LOCAL DB
 # app.config["SQLALCHEMY_DATABASE_URI"] = 'sqlite:///site.db'
@@ -161,7 +161,7 @@ def snoc_form():
 
 @app.route('/google_data', methods=["GET"])
 def google_data():
-    print("HELLO WORLD")
+    print("Google Data HELLO WORLD")
     empDict = {'latitude': [],
                'longitude': []}
 
@@ -201,8 +201,6 @@ def denver311():
 @app.route("/uploads/<path:filename>", methods=['GET'])
 def uploads(filename):
     path = os.getcwd()
-    print('PATH: ********************************')
-    print(path)
     try:
         return send_from_directory(directory='/home/juicyjames/website_flask/flask_app/static/uploads', filename=filename, as_attachment=True)
     except FileNotFoundError:

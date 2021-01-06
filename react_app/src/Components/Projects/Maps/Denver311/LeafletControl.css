@@ -1,7 +1,6 @@
 .container-leaf{
     background-color:rgb(25, 25, 112, 0.7); 
     margin:10pt;  
-    width:420px; 
     color:rgb(218, 126, 14);          
   }
   #toggle-leaf {
@@ -44,7 +43,7 @@
     color: #FFF;
   }
   #toggle-leaf:checked ~ #expand-leaf {
-    height: 450px;
+    height: 280px;
   }
   #toggle-leaf:checked ~ #label-leaf::before {
     content: "-";

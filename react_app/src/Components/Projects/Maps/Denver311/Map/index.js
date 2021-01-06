@@ -134,7 +134,7 @@ export default class Map extends React.Component {
 
     render(){    
         
-        return <Wrapper width="80%" height="720px" id="map" >
+        return <Wrapper width="100%" height="100vh" id="map" >
             <LeafletControl onSubmit={this.onSubmit} onChange={this.onChange} searchbox={this.state.searchbox}/>
         </Wrapper>
         

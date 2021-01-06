@@ -13,8 +13,8 @@ export default class GoogleGps extends React.Component {
   state = {
     location: [],
   };
-
   componentDidMount() {
+    
     const data = [];
     axios.get("/google_data").then((response) => {
       for (var i = 0; i < response.data.latitude.length; i++) {
@@ -25,6 +25,8 @@ export default class GoogleGps extends React.Component {
   }
 
   render() {
+  window.scrollTo(0, 0);
+
     return (
       <Wrapper className="map">
         <h1>Google GPS Data</h1>
